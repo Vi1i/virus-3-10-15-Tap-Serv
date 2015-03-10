@@ -1,0 +1,18 @@
+1,16,31,46	*	*	*	*	/usr/local/psa/admin/sbin/backupmng >/dev/null 2>&1
+00 01 * * * cd /usr/local/sso && /usr/bin/sw-engine /usr/local/sso/process/DBcleanup.php /etc/sso/sso_config.ini
+MAILTO=jason@tappinn.com
+0	2	1-31	1-12	1-7	env php -q /var/www/vhosts/tappinn.com/httpdocs/public/cron/payment.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/payment.php
+*/15	*	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/visiters.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/visiters.log
+*/60	*	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/summary_map.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/summary_map.log
+*/30	*	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/engagement.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/engagements.log
+30	2	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/summary_code.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/summary_code.log
+30	4	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/summary_device.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/summary_device.log
+0	5	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/summary_page.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/summary_page.log
+0	0	*/15	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/table_optimizer.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/optimize.log
+*/20	*	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/twilio.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/twilio.log
+0	4	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/achievements.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/achievements.log
+15	0	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/twilio_daily.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/twilio_daily.log
+10	3	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/summary_smslinks.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/summary_smslinks.log
+1	0	*	*	*	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/autovalidate.php >> /var/www/vhosts/tappinn.com/httpdocs/crons/logs/autovalidate.log
+5	12	*	*	sun	env php -q /var/www/vhosts/tappinn.com/httpdocs/crons/reward_email.php
+MAILTO=sbos@tappinn.com
